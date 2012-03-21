@@ -1,0 +1,43 @@
+Macでの設定(一番上はgemでエラーが起きた場合のみ実行(MacPortsなので注意))
+$ sudo port install rb-rubygems
+$ sudo gem install twitter
+$ sudo gem install oauth
+
+
+#########
+# 使い方 #
+#########
+起動:
+$ ruby ruby_twitter.rb
+
+URLにブラウザでアクセスし、PINコードをコピペでターミナルに入力
+
+下記が表示されれば認証成功
+ruby_twitter$
+
+##コマンド一覧
+#TLの取得(デフォルト:最新の20件)
+ruby_twitter$ tls
+#-lオプションで取得件数を設定可能(最大200件)
+ruby_twitter$ tls -l 10
+#-@オプションでメンションの取得(最大200件)
+ruby_twitter$ tls -@ 10
+
+#つぶやく
+ruby_twitter$ tup つぶやき
+
+
+#ログアウト
+ruby_twitter$ logout
+twitter logout ok? y:n > y
+再度PINが求められる
+
+#終了
+ruby_twitter$ exit
+
+
+#########
+#  Todo #
+#########
+特定ユーザーの最新つぶやきを取得する機能 -> ストーカー機能 -> 住所がわかる場合は、最新日時と場所を表示する機能
+つぶやきでの個人特定支援機能
