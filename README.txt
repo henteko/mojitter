@@ -7,6 +7,13 @@ $ sudo gem install oauth
 #########
 # 使い方 #
 #########
+最初に:
+ twitter_lib.rb中の
+ $CONSUMER_KEY = "YOU_CONSUMER_KEY"
+ $CONSUMER_SECRET = "YOU_CONSUMER_SECRET"
+ を各自適切な物に置換してください
+
+
 起動:
 $ ruby ruby_twitter.rb
 
