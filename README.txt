@@ -15,32 +15,32 @@ $ sudo gem install oauth
 
 
 起動:
-$ ruby ruby_twitter.rb
+$ ruby mojitter.rb
 
 URLにブラウザでアクセスし、PINコードをコピペでターミナルに入力
 
 下記が表示されれば認証成功
-ruby_twitter$
+{自分のアカウント名} : mojitter$
 
 ##コマンド一覧
 #TLの取得(デフォルト:最新の20件)
-ruby_twitter$ tls
+{自分のアカウント名} : mojitter$ tls
 #-lオプションで取得件数を設定可能(最大200件)
-ruby_twitter$ tls -l 10
+{自分のアカウント名} : mojitter$ tls -l 10
 #-@オプションでメンションの取得(最大200件)
-ruby_twitter$ tls -@ 10
+{自分のアカウント名} : mojitter$ tls -@ 10
 
 #つぶやく
-ruby_twitter$ tup つぶやき
+{自分のアカウント名} : mojitter$ tup つぶやき
 
 
 #ログアウト
-ruby_twitter$ logout
+{自分のアカウント名} : mojitter$ logout
 twitter logout ok? y:n > y
 再度PINが求められる
 
 #終了
-ruby_twitter$ exit
+{自分のアカウント名} : mojitter$ exit
 
 
 #########
