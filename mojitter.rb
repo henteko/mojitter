@@ -2,7 +2,7 @@ require 'rubygems'
 require './twitter_lib'
 include Twitter_lib
 
-$APP_NAME = "ruby_twitter"
+$APP_NAME = "mojitter"
 
 ###設定系###
 login()
