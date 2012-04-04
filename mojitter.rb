@@ -5,6 +5,11 @@ include Twitter_lib
 $APP_NAME = "mojitter"
 
 ###設定系###
+if defined?(ARGV[0])
+    set_proxy(ARGV[0],ARGV[1])
+else
+    set_proxy(nil,nil)
+end
 login()
 client = get_client()
 
