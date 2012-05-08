@@ -22,6 +22,7 @@ while line = STDIN.gets
         bye()
         break;
     when /tls/
+        puts "-------------------------------------------"
         line = line.split(" ",2)
         case line.last
         when /-l/
@@ -51,6 +52,7 @@ while line = STDIN.gets
                 puts "  #{status.user.screen_name} >> "+"#{status['text']}"
             end
         end
+        puts "-------------------------------------------"
     when /tup/
         line = line.split(" ",2)
         client.update(line.last)
