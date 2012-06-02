@@ -44,6 +44,22 @@ twitter logout ok? y:n > y
 {自分のアカウント名} : mojitter$ exit
 
 
+####################
+# bash用設定(自分用)
+####################
+loginのみ
+$ ruby ${mojitter.rbまでのfile path} -login
+
+logoutのみ
+$ ruby ${mojitter.rbまでのfile path} -logout
+
+TLから最新ツイートを1行のみ取得
+$ ruby ${mojitter.rbまでのfile path} -bash
+
+Macなどで、.bash_profileに以下を追加すると、bashの$以前に最新ツイートを表示することが出来ます(現状コマンドたたくごとにネットワーク通信する)
+export PS1="\u:\W \$(ruby ${mojitter.rbまでのfile path} -bash)$ "
+
+
 #########
 #  Todo #
 #########
