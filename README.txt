@@ -47,6 +47,9 @@ twitter logout ok? y:n > y
 ####################
 # bash用設定(自分用)
 ####################
+
+${mojitter.rbまでのfile path}の例: ~/mojitter/mojitter.rb
+
 loginのみ
 $ ruby ${mojitter.rbまでのfile path} -login
 
