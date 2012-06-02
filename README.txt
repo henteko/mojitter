@@ -16,7 +16,6 @@ $ sudo gem install oauth
 
 起動:
 $ ruby mojitter.rb
-(proxyあり)$ ruby mojitter.rb proxy_addr proxy_port
 
 URLにブラウザでアクセスし、PINコードをコピペでターミナルに入力
 
