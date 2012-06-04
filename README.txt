@@ -61,6 +61,15 @@ $ ruby ${mojitter.rbまでのfile path} -bash
 Macなどで、.bash_profileに以下を追加すると、bashの$以前に最新ツイートを表示することが出来ます(現状コマンドたたくごとにネットワーク通信する)
 export PS1="\u:\W \$(ruby ${mojitter.rbまでのfile path} -bash)$ "
 
+2012/06/04追加
+mojitter/cron/mojitter_bash.shを実行すると、mojitter/cron/out_tweet.txtに最新ツイート1件が書き込まれます
+一応実行権限を持たせた方がいいかも? -> chmod u+x mojitter/cron/mojitter_bash.sh
+さらに、cronに以下の設定を書き込むと便利かもしれません
+cron例: */2 * * * * ${mojitterまでの絶対パス}/cron/mojitter_bash.sh #毎時間2分ごとに更新
+
+さらにさらに.bash_profileに以下を追加すると、毎回ネットワーク通信することなく表示出来ます
+export PS1="\u:\W \$(cat ${mojitterまでの絶対パス}/cron/out_tweet.txt)$ "
+
 
 #########
 #  Todo #

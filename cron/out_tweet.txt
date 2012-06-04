@@ -1,0 +1,1 @@
+Welcome!! This is mojitter for bash.
