@@ -148,4 +148,22 @@ module Twitter_lib
     def get_name()
         return $screen_name
     end
+    
+    #id -> $client.status['id']
+    #unfav_flag -> true(unfav ok) or false(not unfav)
+    #opt -> ?
+    def fav(id, unfav_flag, opt=nil)
+        begin
+            return $client.favorite(id)
+            rescue
+            if(unfav_flag)
+                return unfav(id, opt)
+            end
+        end
+        return false
+    end
+    
+    def unfav(id, opt=nil)
+        return $client.unfavorite(id)
+    end
 end

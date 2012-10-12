@@ -73,6 +73,34 @@ else
                         puts "  #{status.user.screen_name} >> "+"#{status['text']}"
                     end
                 end
+            when /-name/
+                line = line.last.split(" ",2)
+                fav_search_name = line.last.chomp
+                get_tl(10).each do |status|
+                    fav_name = status.user.screen_name
+                    if(fav_name == fav_search_name && fav(status['id'], false))
+                        puts "  #{status.user.screen_name} >> "+"#{status['text']}"
+                    end
+                end
+            when /-fav_time/
+                line = line.last.split(" ")
+                fav_time = line[1].to_i
+                fav_search_name = line[2].chomp
+                begin
+                    timeout(fav_time) {
+                        while(1)
+                            get_tl(1).each do |status|
+                                fav_name = status.user.screen_name
+                                if(fav_name == fav_search_name && fav(status['id'], false))
+                                    puts "  #{status.user.screen_name} >> "+"#{status['text']}"
+                                end
+                            end
+                            sleep 1
+                        end
+                    }
+                rescue
+                    puts "end fav time"
+                end
             else
                 get_tl(20).each do |status|
                     puts "  #{status.user.screen_name} >> "+"#{status['text']}"
