@@ -9,66 +9,80 @@ $APP_NAME = "mojitter"
 if (ARGV[0] == '-login') 
     login()
     welcome()
-    elsif (ARGV[0] == '-logout')
+elsif (ARGV[0] == '-logout')
     logout()
-    elsif (ARGV[0] == '-bash')
+elsif (ARGV[0] == '-bash')
     if(login_bash())
         print "#{get_name()} : "
         get_tl(1).each do |status|
             puts " #{status.user.screen_name} >> "+"#{status['text']}"
         end
-        else
+    else
         print "mojitter no login!!"
     end 
-    else
+else
     login()
     welcome()
     client = get_client()
-    
+
     ###コマンドでの取得系###
     name = get_name()
     print "#{name} : #{$APP_NAME}$ "
     while line = STDIN.gets
         case line
-            when /exit/
+        when /exit/
             bye()
             break;
-            when /tls/
+        when /tls/
             puts "-------------------------------------------"
             line = line.split(" ",2)
             case line.last
-                when /-l/
+            when /-l/
                 line = line.last.split(" ",2)
                 if(line.last.to_i > 200)
                     get_tl(200).each do |status|
                         puts "  #{status.user.screen_name} >> "+"#{status['text']}"
                     end
-                    else
+                else
                     get_tl(line.last.to_i).each do |status|
                         puts "  #{status.user.screen_name} >> "+"#{status['text']}"
                     end
                 end
-                when /-@/
+            when /-@/
                 line = line.last.split(" ",2)
                 if(line.last.to_i > 200)
                     get_at(200).each do |status|
                         puts "  #{status.user.screen_name} >> "+"#{status['text']}"
                     end
-                    else
+                else
                     get_at(line.last.to_i).each do |status|
                         puts "  #{status.user.screen_name} >> "+"#{status['text']}"
                     end
                 end
-                else
+            when /-stsp/
+                get_pb_tl(200).each do |status|
+                    case status['source']
+                    when /<a href="http:\/\/shootingstar067.com\/" rel="nofollow">ShootingStar<\/a>/
+                        puts "  #{status.user.screen_name} >> "+"#{status['text']}"
+                    end
+                end
+            when /-sts/
+                get_tl(200).each do |status|
+                    case status['source']
+                    when /<a href="http:\/\/shootingstar067.com\/" rel="nofollow">ShootingStar<\/a>/
+                        puts "  #{status.user.screen_name} >> "+"#{status['text']}"
+                    end
+                end
+            else
                 get_tl(20).each do |status|
                     puts "  #{status.user.screen_name} >> "+"#{status['text']}"
                 end
             end
             puts "-------------------------------------------"
-            when /tup/
+        when /tup/
             line = line.split(" ",2)
             client.update(line.last)
-            when /logout/
+        when /logout/
             print "twitter logout ok? y:n > "
             line = STDIN.gets
             if (/y/ =~ line)
@@ -77,7 +91,7 @@ if (ARGV[0] == '-login')
                 client = get_client()
                 name = get_name()
             end
-            else
+        else
             #なんでもないとき
             puts "#{line.chomp} is No Command"
         end
